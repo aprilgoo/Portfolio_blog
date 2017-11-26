@@ -2,11 +2,13 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="blog">
+
+
 <select id="selectPostList" parameterType="hashmap" resultType="hashmap">
 SELECT
             	IDX,
-                TITLE, 
-                SUB_TITLE,               
+                TITLE,
+                SUBSTR(CONTENT,1,50) AS CATEGORY,                               
                 CREA_DTM,
                 CREA_ID
            FROM
@@ -51,7 +53,35 @@ SELECT
 			CREA_ID
 		FROM 
 			POST	
+		WHERE IDX = #{IDX}
 	</select>
+	
+	
+	<insert id="insertPost" parameterType="hashmap">
+		<![CDATA[ 
+		
+		INSERT INTO POST
+					(	
+										
+						TITLE,
+						CONTENT,						
+						DEL_GB,
+						CREA_DTM,
+						CREA_ID
+														
+					
+					)
+					
+				VALUES
+					(						
+						#{TITLE},
+						#{CONTENT},						
+						'N',
+						SYSDATE(),
+						'Admin'															
+					)
+		]]>
+	</insert>
 	
 	
 	

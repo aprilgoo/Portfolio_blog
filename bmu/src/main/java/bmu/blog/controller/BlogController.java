@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 
 @Controller
@@ -45,13 +46,35 @@ public class BlogController {
     	ModelAndView mv = new ModelAndView("/blog/blogDetail");
     	Map<String, Object>map = blogService.selectBlogDetail(commandMap.getMap());
     	mv.addObject("map", map);
-		return mv; 	
-    	
+		return mv; 	    	
     	
     }
     
     
+   @RequestMapping(value="/blog/openBlogWrite.do")
+    public String openblogWrite() throws Exception  {
+    	
+	   String str  = "";
+	   str = "/blog/postWrite";
+	   return str;	   
+   
+   }
     
+    
+    
+    
+    @RequestMapping(value="/blog/insertBlog.do")
+    public ModelAndView insertBlog(CommandMap commandMap) throws Exception {
+    	ModelAndView mv = new ModelAndView("/blog/blogMain");
+    	log.debug(commandMap.getMap());
+    	
+    	blogService.insertPost(commandMap.getMap());
+    	
+    	
+		return mv;  	
+    	
+    	
+    }
     
     
     

@@ -15,13 +15,13 @@
 			  <div class="row">
 		        <div class="col-lg-8 col-md-10 mx-auto">
 		          <div class="post-preview">
-		           <h2 class="post-title">
-		            	<td><a href="/blog/openBlogDetail.do?IDX=${row.IDX}">		             
-		                ${row.TITLE}</a></td>
-		              </h2>
-		              <h3 class="post-subtitle">
-		                ${row.SUB_TITLE}
-		              </h3>   		            
+		           <a href="/blog/openBlogDetail.do?IDX=${row.IDX}">		             
+		               <h2 class="post-title">${row.TITLE}</h2>	              
+		              	<h3 class="post-subtitle">
+		                ${row.CATEGORY}
+		              </h3></a>   		            
+		           
+		           
 		            <p class="post-meta">Posted by
 		              <a href="#">${row.CREA_ID}</a>
 		              ${row.CREA_DTM}</p>

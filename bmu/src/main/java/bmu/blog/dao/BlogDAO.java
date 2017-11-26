@@ -4,13 +4,17 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Repository;
 
 import bmu.common.dao.AbstractDAO;
 
 @Repository("blogDAO")
 public class BlogDAO extends AbstractDAO {
-
+	
+	Logger log = Logger.getLogger(this.getClass());
 
 	@SuppressWarnings("unchecked")
 	public List<Map<String, String>> selectPostList(String opt, String keyword) throws Exception {
@@ -23,6 +27,11 @@ public class BlogDAO extends AbstractDAO {
 	@SuppressWarnings("unchecked")
 	public Map<String, Object> selectBlogDetail(Map<String, Object> map) throws Exception {
 		return(Map<String, Object>)selectOne("blog.selectBlogDetail", map);
+	}
+
+	public void insertPost(Map<String, Object> map) throws Exception  {
+		log.debug(map);
+		insert("blog.insertPost", map);		
 	}
 
 
