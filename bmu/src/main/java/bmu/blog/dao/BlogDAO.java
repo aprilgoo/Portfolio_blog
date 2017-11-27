@@ -39,6 +39,11 @@ public class BlogDAO extends AbstractDAO {
 		
 	}
 
+	public void deletePost(Map<String, Object> map) throws Exception {
+		update("blog.deletePost", map);
+		
+	}
+
 
 	
 	

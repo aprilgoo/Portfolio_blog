@@ -15,6 +15,8 @@ public interface BlogService {
 
 	void updatePost(Map<String, Object> map) throws Exception;
 
+	void deletePost(Map<String, Object> map) throws Exception;
+
 
 
 }

@@ -21,7 +21,17 @@ public class BlogServiceImpl implements BlogService {
 
 	@Override
 	public List<Map<String, String>> selectPostList(String opt, String keyword) throws Exception {
+		
+		log.debug(opt);
+		log.debug(keyword);
+		
 		return blogDAO.selectPostList(opt, keyword);
+		
+		
+		
+		
+		
+		
 	}
 
 	@Override
@@ -32,15 +42,18 @@ public class BlogServiceImpl implements BlogService {
 	@Override
 	public void insertPost(Map<String, Object> map) throws Exception {
 		blogDAO.insertPost(map);	
-		log.debug(map);
 		
 	}
 
 	@Override
 	public void updatePost(Map<String, Object> map) throws Exception {
-		blogDAO.updatePost(map);
-		log.debug(map);
+		blogDAO.updatePost(map);		
 		
+	}
+
+	@Override
+	public void deletePost(Map<String, Object> map) throws Exception {
+		blogDAO.deletePost(map);		
 	}
 
 

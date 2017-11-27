@@ -11,13 +11,12 @@
     <!-- Bootstrap core CSS -->
   <link href="/bootstrap/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Custom styles for this template 
-    <link href="css/blog-post.css" rel="stylesheet"> -->
+    <!-- Custom styles for this template  -->
+    <link href="/bootstrap/css/blog-post.css" rel="stylesheet"> 
     
     		    
-	<!-- Bootstrap core JavaScript -->
- <script src="bootstrap/vendor/jquery/jquery.min.js"></script>
- <script src="bootstrap/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<!-- Bootstrap core JavaScript   -->
+ <script src="/bootstrap/vendor/jquery/jquery.min.js"></script>     
 </head>
 
 <body>

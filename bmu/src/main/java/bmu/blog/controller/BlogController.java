@@ -26,6 +26,12 @@ public class BlogController {
 	private BlogService blogService;
 	
 	
+	@RequestMapping("/blog/openIndex.do")
+	public String openIndex( ) throws Exception {
+		String str = "";
+		str = "redirect:/index.jsp";
+		return str;
+	}	
 	
 	
     @RequestMapping(value="/blog/openBlogMain.do")
@@ -37,9 +43,7 @@ public class BlogController {
     	map.put("list", list);
     	map.put("opt", opt);
     	map.put("keyword", keyword);
-    	mv.addObject("map", map);
-    	// mv.setViewName("/blog/blogMain");
-    	
+    	mv.addObject("map", map);     	
         return mv;        
     }
     
@@ -68,12 +72,10 @@ public class BlogController {
     
     @RequestMapping(value="/blog/insertBlog.do")
     public ModelAndView insertBlog(CommandMap commandMap) throws Exception {
-    	ModelAndView mv = new ModelAndView("/blog/blogMain");
+    	ModelAndView mv = new ModelAndView("redirect:/blog/openIndex.do");
     	log.debug(commandMap.getMap());
     	
-    	blogService.insertPost(commandMap.getMap());
-    	
-    	
+    	blogService.insertPost(commandMap.getMap());    	
 		return mv;  	   	
     	
     }
@@ -92,28 +94,25 @@ public class BlogController {
     
    @RequestMapping(value="/blog/updateBlog.do")
    public ModelAndView updateBlog(CommandMap commandMap) throws Exception {
-   	ModelAndView mv = new ModelAndView("/blog/blogMain");
-   		blogService.updatePost(commandMap.getMap());
-   		//mv.addObject("IDX", commandMap.get("IDX"));
+   	ModelAndView mv = new ModelAndView("redirect:/blog/openIndex.do");
+   		blogService.updatePost(commandMap.getMap());   		
    		return mv;  
     
    }
     
     
+   
+   @RequestMapping(value="/blog/deletePost.do")
+   public ModelAndView deletePost(CommandMap commandMap) throws Exception {
+   	ModelAndView mv = new ModelAndView("redirect:/blog/openIndex.do");
+   		blogService.deletePost(commandMap.getMap());   		
+   		return mv;  
+    
+   }
     
     
+   
     
-    
-    /**
-     * 
-     * 
-     *      	
-    	
-    	
-    }
-     * 
-     * 
-     */
     
 
 	

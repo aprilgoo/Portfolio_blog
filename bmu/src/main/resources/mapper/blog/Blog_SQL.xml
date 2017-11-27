@@ -95,4 +95,23 @@ SELECT
 	</update>
 	
 	
+	<update id="deletePost" parameterType="hashmap">
+	    <![CDATA[
+        UPDATE POST
+        SET
+            DEL_GB = 'Y'
+        WHERE
+            IDX = #{IDX}   
+   		 ]]>	
+	</update>
+	
 </mapper>
+
+
+
+
+
+
+
+
+

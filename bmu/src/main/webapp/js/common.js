@@ -9,6 +9,7 @@ function gfn_isNull(str) {
     return false; 
 }
 
+
 function ComSubmit(opt_formId) {
 	this.formId = gfn_isNull(opt_formId) == true ? "commonForm" : opt_formId;
 	this.url = "";
@@ -32,4 +33,39 @@ function ComSubmit(opt_formId) {
 		frm.submit();	
 	};
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
