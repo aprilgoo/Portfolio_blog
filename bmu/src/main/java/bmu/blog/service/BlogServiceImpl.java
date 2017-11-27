@@ -36,5 +36,12 @@ public class BlogServiceImpl implements BlogService {
 		
 	}
 
+	@Override
+	public void updatePost(Map<String, Object> map) throws Exception {
+		blogDAO.updatePost(map);
+		log.debug(map);
+		
+	}
+
 
 }

@@ -2,17 +2,17 @@
 <html lang="en">
 
   <head>
-
+	 <%@include file="/layout/include-header.jspf" %> 
+    	<title>My blog - Detail</title>
+    
+     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+     <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+     
+     
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-
-    <title>My blog - Detail</title>
-    
-      <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-      <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-      <%@include file="/layout/include-header.jspf" %> 
 
           <!-- Custom styles for this template -->
     <link href="bootstrap/css/blog-post.css" rel="stylesheet">
@@ -25,13 +25,14 @@
   </head>
 
   <body>
-    <!-- Page Content -->
+  
+      <!-- Page Content -->
     <div class="container">
 
       <div class="row">
 
         <!-- Post Content Column -->
-        <div class="col-lg-8">
+        <div class="col-lg-8">        	
 
           <!-- Title -->
           <h1 class="mt-4">${map.TITLE}</h1>
@@ -39,7 +40,7 @@
           <!-- Author -->
           <p class="lead">
             by
-            <a href="#">${map.CREA_ID}</a>
+            <a href="#">${map.CREA_ID}</a>          
           </p>
 
           <hr>
@@ -51,16 +52,17 @@
 
           <!-- Preview Image -->
           <img class="img-fluid rounded" src="http://placehold.it/900x300" alt="">
-
+          
           <hr>
 
           <!-- Post Content -->
           <p class="lead">            
             ${map.CONTENT}
           </p>
-
           <hr>
-
+         	<div align="right"><a href="/blog/openPostUpdate.do?IDX=${map.IDX}" class="btn btn-outline-info btn-md">MODIFY</a></div>	          
+          
+          
           <!-- Comments Form -->
           <div class="card my-4">
             <h5 class="card-header">Leave a Comment:</h5>

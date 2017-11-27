@@ -83,6 +83,16 @@ SELECT
 		]]>
 	</insert>
 	
+	<update id="updatePost" parameterType="hashmap">
+	    <![CDATA[
+        UPDATE POST
+        SET
+            TITLE = #{TITLE},
+            CONTENT = #{CONTENT}
+        WHERE
+            IDX = #{IDX}   
+   		 ]]>	
+	</update>
 	
 	
 </mapper>

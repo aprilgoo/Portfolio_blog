@@ -13,6 +13,8 @@ public interface BlogService {
 
 	void insertPost(Map<String, Object> map) throws Exception;
 
+	void updatePost(Map<String, Object> map) throws Exception;
+
 
 
 }

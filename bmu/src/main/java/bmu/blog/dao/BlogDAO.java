@@ -34,6 +34,11 @@ public class BlogDAO extends AbstractDAO {
 		insert("blog.insertPost", map);		
 	}
 
+	public void updatePost(Map<String, Object> map) throws Exception  {
+		update("blog.updatePost", map);
+		
+	}
+
 
 	
 	

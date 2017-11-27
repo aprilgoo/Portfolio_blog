@@ -25,6 +25,9 @@ public class BlogController {
 	@Resource(name="blogService")
 	private BlogService blogService;
 	
+	
+	
+	
     @RequestMapping(value="/blog/openBlogMain.do")
     public ModelAndView openBlogMain(@RequestParam(defaultValue="TITLE") String opt, @RequestParam(defaultValue="") String keyword, Map<String,Object>commandMap) throws Exception {
         ModelAndView mv = new ModelAndView("/blog/blogMain");        
@@ -71,12 +74,30 @@ public class BlogController {
     	blogService.insertPost(commandMap.getMap());
     	
     	
-		return mv;  	
-    	
+		return mv;  	   	
     	
     }
     
     
+    @RequestMapping(value="/blog/openPostUpdate.do")
+    public ModelAndView openPostUpdate(CommandMap commandMap) throws Exception {    	
+       ModelAndView mv = new ModelAndView("/blog/postUpdate"); 	   
+ 	   Map<String, Object>map = blogService.selectBlogDetail(commandMap.getMap());
+ 	   mv.addObject("map", map);
+ 	   log.debug(map);
+ 	   return mv;	   
+    }
+    
+    
+    
+   @RequestMapping(value="/blog/updateBlog.do")
+   public ModelAndView updateBlog(CommandMap commandMap) throws Exception {
+   	ModelAndView mv = new ModelAndView("/blog/blogMain");
+   		blogService.updatePost(commandMap.getMap());
+   		//mv.addObject("IDX", commandMap.get("IDX"));
+   		return mv;  
+    
+   }
     
     
     
@@ -86,10 +107,7 @@ public class BlogController {
     /**
      * 
      * 
-     *     @RequestMapping(value="")
-    public ModelAndView openblogDetail() {
-    	ModelAndView mv = new ModelAndView("");
-		return mv;  	
+     *      	
     	
     	
     }

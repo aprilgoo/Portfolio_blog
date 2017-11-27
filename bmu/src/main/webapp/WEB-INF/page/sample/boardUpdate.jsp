@@ -16,8 +16,7 @@
             <tbody>
                 <tr>
                     <th scope="row">글 번호</th>
-                    <td>
-                        ${map.IDX}
+                    <td>                        
                         <input type="hidden" id="IDX" name="IDX" value="${map.IDX}">
                     </td>
                     <th scope="row">조회수</th>

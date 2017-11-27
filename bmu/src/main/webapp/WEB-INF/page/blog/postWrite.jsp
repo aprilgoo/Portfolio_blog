@@ -4,16 +4,39 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <title>bootstrap4</title>
+    <title>My blog - Detail</title>
       <%@include file="/layout/include-snote.jsp" %>   
     <br>
-   	<div class="clearfix">
-   	<form id="frm" method="POST" action="/blog/insertBlog.do">	
-   		<button type="submit" class="btn btn-secondary float-right bg-dark">발행하기</button>
-	</div>
-	</br>     
-  </head>
-  <body>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+    	<!-- Custom styles for this template -->
+    <link href="bootstrap/css/blog-post.css" rel="stylesheet">
+
+    	<!-- Bootstrap core CSS -->
+    <link href="bootstrap/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    	
+    	<!-- Custom styles for this template -->
+    <link href="bootstrap/css/blog-post.css" rel="stylesheet">
+    
+    <div class="container">
+
+      <div class="row">
+
+        <!-- Post Content Column -->
+        <div class="col-lg-8">
+    
+    
+   			<div class="clearfix">
+			   	<form id="frm" method="POST" action="/blog/insertBlog.do">	
+			   		<button type="submit" class="btn btn-secondary float-right bg-dark">발행하기</button>
+				</div>
+		</br>     
+</head>
+<body>
   	
   
           <!-- Post Content Column -->
