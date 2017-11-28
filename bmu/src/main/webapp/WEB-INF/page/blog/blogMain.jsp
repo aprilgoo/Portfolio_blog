@@ -26,8 +26,8 @@
   </head>
 
   <body>
-
-     <!-- Navigation -->
+  
+      <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
         <a class="navbar-brand" href="/blog/openIndex.do">My blog</a>
@@ -42,7 +42,8 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/sample/openBoardList.do">Login</a>
+            <!-- <button type="button" name="login" id="login" class="btn btn-success" data-toggle="modal" data-target="#loginModal">Login</button>   -->	     
+              <a class="nav-link" name="login" id="login"  data-toggle="modal" data-target="#loginModal">Login</a>             
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/blog/openBlogWrite.do">Write</a>
@@ -104,6 +105,7 @@
     
  <%@include file="/layout/include-body.jspf" %>   
 
+
     <hr> 
 
     <!-- Bootstrap core JavaScript -->
@@ -114,5 +116,100 @@
     <script src="js/clean-blog.min.js"></script>
 
   </body>
-
 </html>
+
+             		<!-- 		 <table>
+                                <form role="form" action="/login/openLoginSession.do" method="POST" class="login-form">
+                                    <div class="form-group">
+                                        <label class="sr-only" for="form-username">Username</label>
+                                        <input type="text" name="USER_ID" placeholder="Username..." class="form-username form-control" id="USER_ID">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="sr-only" for="form-password">Password</label>
+                                        <input type="password" name="USER_PWD" placeholder="Password..." class="form-password form-control" id="USER_PWD">
+                                    </div>
+                                    <input type="submit" name="login" class="btn" value="Sign in!" />
+                                </form>
+                                <div id="msg"></div>
+                            </table>  -->
+
+<form role="form" action="/login/openLoginSession.do" method="POST">
+<div id="loginModal" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+		<div  class="modal-content">
+			<div class="modal-header">
+			<!-- <button type="button" class="close" data-dismiss="modal">Login</button>  -->	
+				<h4 class="modal-title">Login</h4>
+			</div>
+			<div class="modal-body">
+				<label>UserID : </label>
+				<input type="text" name="USER_ID" id="USER_ID" class="form-control"  />
+				<label>PassWord : </label>
+				<input type="password" name="USER_PWD" id="USER_PWD" class="form-control"  />
+				<br />
+				<button type="submit" name="login_button" id="login_button" class="btn btn-warning">Sign in!</button>
+				</div>			
+			</div>		
+		</div>
+	</div>
+</form>
+<div id="msg"></div>
+
+
+<script>
+$(document).ready(function() {
+    $('#login_button').click(function() {
+
+        var action = $('#frm').attr("action");
+
+        var frm_data = {
+
+            USER_ID: $('#USER_ID').val(),
+            USER_PWD: $('#USER_PWD').val()            
+     
+        };
+        
+        if(USER_ID != '' && USER_PWD != '')
+    	{        
+
+
+            $.ajax({
+
+                type: "POST",
+                url: action,
+                data: frm_data,
+                success: function(response) {
+
+                    if (response.trim() == "success") {
+
+                        sessionStorage.setItem("USER_ID", frm_data, USER_ID);
+                        $('#msg').html("<p style='color:green; font-weight:bold'>Login Success</p>");
+
+                    } else {
+
+                        $('#msg').html("<p style='color:red'>Check your ID or Password</p>")
+                    }
+                },
+                error: function() {
+                    $('#msg').html("<h2>Error</h2>");
+                }
+            });
+    	
+    	
+    	}
+    else {
+    	
+    	alert("Both Fileds are required");
+    }
+        
+
+    });
+
+});
+</script>
+
+
+
+
+
+
