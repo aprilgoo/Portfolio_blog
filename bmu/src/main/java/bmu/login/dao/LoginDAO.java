@@ -11,11 +11,11 @@ import bmu.common.dao.AbstractDAO;
 public class LoginDAO extends AbstractDAO {
 	
 	Logger log = Logger.getLogger(this.getClass());
+	
 
 	@SuppressWarnings("unchecked")
-	public Map<String, Object> LoginCheck(Map<String, Object> map) throws Exception {
-				
-		return(Map<String, Object>)selectOne("login.LoginCheck", map);
+	public Map<String, String> LoginCheck(Map<String, Object> map) throws Exception {
+		return(Map<String, String>)selectOne("login.LoginCheck", map);
 	}
 
 }

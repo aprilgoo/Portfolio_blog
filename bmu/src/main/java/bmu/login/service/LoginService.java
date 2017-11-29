@@ -7,7 +7,9 @@ import javax.servlet.http.HttpSession;
 
 public interface LoginService {
 
-	Map<String, Object> LoginCheck(HttpSession session, HttpServletRequest request, Map<String, Object>map) throws Exception;
+	Map<String, String> LoginCheck(Map<String, Object> map) throws Exception;
+
+	
 	
 
 }

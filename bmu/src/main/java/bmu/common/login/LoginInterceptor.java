@@ -17,7 +17,7 @@ public class LoginInterceptor  extends HandlerInterceptorAdapter  {
 		try {
 			
 			//user세션이 없을 경우 메인 페이지로 리다이렉트됨
-			if(request.getSession().getAttribute("user") == null) {			
+			if(request.getSession().getAttribute("USER") == null) {			
 				response.sendRedirect("/");
 				return false;				
 			}					

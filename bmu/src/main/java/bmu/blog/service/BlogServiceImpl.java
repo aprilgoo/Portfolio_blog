@@ -22,15 +22,7 @@ public class BlogServiceImpl implements BlogService {
 	@Override
 	public List<Map<String, String>> selectPostList(String opt, String keyword) throws Exception {
 		
-		log.debug(opt);
-		log.debug(keyword);
-		
-		return blogDAO.selectPostList(opt, keyword);
-		
-		
-		
-		
-		
+		return blogDAO.selectPostList(opt, keyword);	
 		
 	}
 
