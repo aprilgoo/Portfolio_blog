@@ -21,19 +21,13 @@
                 <link href="/bootstrap/css/clean-blog.min.css" rel="stylesheet">
                 <!-- JavaScript -->
                 <script src="http://code.jquery.com/jquery-1.12.0.js"></script>
-                <script>
-                //      $(document).ready(function() {          
-
-                //       $('#login_button').click(function() {
-
+                <script>              
                 function loginCheck() {
-
+                	
                     var Param = {
-
                         USER_ID: $('#USER_ID').val(),
                         USER_PWD: $('#USER_PWD').val()
                     }
-
 
                     $.ajax({
 
@@ -52,7 +46,6 @@
 
                                 alert("Check your ID or PassWord!")
                                 return false;
-
                             }
 
                             alert(check);
@@ -62,15 +55,10 @@
 
                             alert("code:" + request.status + "\n" + "error:" + error);
                         }
-
                     });
                 }
-
-
-
-
+                
                 function loginSuccess() {
-
                     alert("login...");
                     location.href = '/blog/openIndex.do'
                     login.submit();
@@ -78,7 +66,6 @@
 
 
                 function logOut() {
-
                     $.ajax({
 
                         type: "POST",
@@ -88,10 +75,6 @@
 
                     location.href = '/blog/openIndex.do'
                     logout.submit();
-
-
-
-
                 }
                 </script>
     </head>

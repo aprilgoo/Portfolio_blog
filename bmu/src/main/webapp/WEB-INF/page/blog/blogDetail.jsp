@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,33 +16,39 @@
 </head>
 
 <body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="/blog/openIndex.do">My blog</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/blog/openIndex.do">Home
+            <!-- Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="/blog/openIndex.do">My blog</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/blog/openIndex.do">Home
                 <span class="sr-only">(current)</span>
               </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/sample/openBoardList.do">Board</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/blog/openBlogWrite.do">Write</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="http://beammeupplz.blog.me/">Contact</a>
-                    </li>
-                </ul>
+                        </li>
+                        <% if(session.getAttribute("USER") == null)  { %>
+                            <li class="nav-item">
+                                <a class="nav-link" id="login" data-toggle="modal" data-target="#loginModal">Login</a>
+                            </li>
+                            <% } else { %>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="logout" data-toggle="modal" data-target="#logoutModal">Logout</a>
+                                </li>
+                                <% } %>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/blog/openBlogWrite.do">Write</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="http://beammeupplz.blog.me/">Contact</a>
+                                    </li>
+                    </ul>
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
     <br>
     <br>
     <br>
@@ -73,8 +81,11 @@
                     ${map.CONTENT}
                 </p>
                 <hr>
+                <% if(session.getAttribute("USER") != null)  { %>
                 <div align="right"><a href="/blog/openPostUpdate.do?IDX=${map.IDX}" class="btn btn-outline-info btn-md">MODIFY</a>
                     <a href="/blog/deletePost.do?IDX=${map.IDX}" class="btn btn-outline-info btn-md">DELETE</a></div>
+                <% } %>
+                    
                 <!-- Comments Form -->
                 <div class="card my-4">
                     <h5 class="card-header">Leave a Comment:</h5>

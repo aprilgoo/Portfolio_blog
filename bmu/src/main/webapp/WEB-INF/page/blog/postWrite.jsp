@@ -27,7 +27,7 @@
     </head>
 
     <body>
-        <!-- Navigation -->
+                <!-- Navigation -->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
             <div class="container">
                 <a class="navbar-brand" href="/blog/openIndex.do">My blog</a>
@@ -41,15 +41,21 @@
                 <span class="sr-only">(current)</span>
               </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/sample/openBoardList.do">Login</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/blog/openBlogWrite.do">Write</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="http://beammeupplz.blog.me/">Contact</a>
-                        </li>
+                        <% if(session.getAttribute("USER") == null)  { %>
+                            <li class="nav-item">
+                                <a class="nav-link" id="login" data-toggle="modal" data-target="#loginModal">Login</a>
+                            </li>
+                            <% } else { %>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="logout" data-toggle="modal" data-target="#logoutModal">Logout</a>
+                                </li>
+                                <% } %>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/blog/openBlogWrite.do">Write</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="http://beammeupplz.blog.me/">Contact</a>
+                                    </li>
                     </ul>
                 </div>
             </div>

@@ -12,7 +12,8 @@ SELECT
                 CREA_DTM,
                 CREA_ID
            FROM
-                POST
+                POST       
+			
                <include refid="search"></include>    		                     		
     </select>
     
@@ -22,23 +23,27 @@ SELECT
 	        <when test="opt == 'all'">
 	        	<![CDATA[
 	            WHERE
-	             	DEL_GB = 'N' && CONTENT like CONCAT('%', #{keyword}, '%') OR DEL_GB = 'N' && TITLE like CONCAT('%', #{keyword}, '%')     ]]>        
+	             	DEL_GB = 'N' && CONTENT like CONCAT('%', #{keyword}, '%') OR DEL_GB = 'N' && TITLE like CONCAT('%', #{keyword}, '%') 
+	             	ORDER BY IDX DESC    ]]>        
 	        </when>
 	        <!-- 제목 옵션일 경우 -->
 	        <when test="opt =='title'">	        	        
 	          	<![CDATA[  
 	          	WHERE
-	            	DEL_GB = 'N' && TITLE like CONCAT('%', #{keyword}, '%') 	]]>
+	            	DEL_GB = 'N' && TITLE like CONCAT('%', #{keyword}, '%')
+	            	ORDER BY IDX DESC 	]]>
 	       </when>
 	       <!-- 내용 옵션일 경우 -->
 	       <when test="opt =='contents'">	        	        
 	        	<![CDATA[    
 	        	WHERE
-	            	DEL_GB = 'N' && CONTENT like CONCAT('%', #{keyword}, '%') 	]]>
+	            	DEL_GB = 'N' && CONTENT like CONCAT('%', #{keyword}, '%')
+	            	ORDER BY IDX DESC 	]]>
 	       </when>
 	       <otherwise>
 	       		WHERE 
-	       			DEL_GB = 'N'	       
+	       			DEL_GB = 'N' 
+	       			ORDER BY IDX DESC	       
 	       </otherwise>
 	    </choose>
 	</sql>
