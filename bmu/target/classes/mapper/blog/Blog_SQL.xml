@@ -110,6 +110,36 @@ SELECT
    		 ]]>	
 	</update>
 	
+	<insert id="insertComments" parameterType="hashmap">
+		<![CDATA[
+			INSERT INTO COMMENTS
+				(	
+					IDX,
+					CREA_ID,
+					COMMENTS,
+					DEL_GB
+				)
+				VALUES (
+				
+					#{IDX},
+					#{CREA_ID},
+					#{COMMENTS},
+					'N'	
+				)		
+		]]>
+	</insert>
+	
+	<select id="showComments" parameterType="hashmap" resultType="hashmap">
+SELECT
+            	CREA_ID,
+              	COMMENTS
+           FROM
+                COMMENTS  
+		   WHERE DEL_GB = 'N'   
+			
+           <!--  <include refid="search"></include>   -->       		                     		
+    </select>
+	
 </mapper>
 
 

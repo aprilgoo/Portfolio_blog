@@ -1,5 +1,6 @@
 package bmu.blog.service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -10,6 +11,7 @@ import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
 import bmu.blog.dao.BlogDAO;
+import bmu.common.common.CommandMap;
 
 @Service("blogService")
 public class BlogServiceImpl implements BlogService {
@@ -21,7 +23,9 @@ public class BlogServiceImpl implements BlogService {
 
 	@Override
 	public List<Map<String, String>> selectPostList(String opt, String keyword) throws Exception {
-		
+		Map<String, String>map = new HashMap<String, String>();
+		map.put("opt", opt);
+		map.put("keyword", keyword);
 		return blogDAO.selectPostList(opt, keyword);	
 		
 	}
@@ -47,6 +51,26 @@ public class BlogServiceImpl implements BlogService {
 	public void deletePost(Map<String, Object> map) throws Exception {
 		blogDAO.deletePost(map);		
 	}
+
+	@Override
+	public String insertComments(Map<String, Object> map) throws Exception {
+		blogDAO.insertComments(map);		
+		String IDX = map.get("IDX").toString();
+		log.debug(IDX);
+		return IDX;
+		
+	}
+
+	@Override
+	public List<Map<String, Object>> showComments() throws Exception {
+		return blogDAO.showComments();
+	}
+
+
+
+
+
+
 
 
 }

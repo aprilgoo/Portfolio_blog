@@ -51,8 +51,15 @@ public class BlogController {
     @RequestMapping(value="/blog/openBlogDetail.do")
     public ModelAndView openblogDetail(CommandMap commandMap) throws Exception {
     	ModelAndView mv = new ModelAndView("/blog/blogDetail");
+    	
+    	//글 내용 보여주기
     	Map<String, Object>map = blogService.selectBlogDetail(commandMap.getMap());
     	mv.addObject("map", map);
+    	
+    	//댓글 내용 보여주기
+       	List<Map<String,Object>> list = blogService.showComments();
+       	mv.addObject("list", list);
+       	
 		return mv; 	    	
     	
     }
@@ -109,43 +116,17 @@ public class BlogController {
    		return mv;  
     
    }
-    
-    
    
-    
-    
+   
+   
+   @RequestMapping(value="/blog/insertComments.do")
+   public ModelAndView insertComments(CommandMap commandMap) throws Exception {
+	   String map = blogService.insertComments(commandMap.getMap());	   
+	   ModelAndView mv = new ModelAndView("redirect:/blog/openBlogDetail.do?IDX="+ map);	
+	   return mv;  	   
+   }
+   
 
-	
-	
 }
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
