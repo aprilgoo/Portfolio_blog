@@ -36,11 +36,12 @@
            <mvc:mapping path="/blog/updateBlog.do"/>
            <mvc:mapping path="/blog/deletePost.do"/>          
            <bean id="LoginInterceptor" class="bmu.common.login.LoginInterceptor"></bean>            
-        </mvc:interceptor>
-        
+        </mvc:interceptor>     
         
         
     </mvc:interceptors>
+    
+    <bean id="jsonView" class="org.springframework.web.servlet.view.json.MappingJackson2JsonView" />
     
     <aop:aspectj-autoproxy/>
     <bean id="loggerAspect" class="bmu.common.logger.LoggerAspect" />
@@ -48,7 +49,8 @@
     <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping"/>
      
     <bean class="org.springframework.web.servlet.view.BeanNameViewResolver" p:order="0" />
-    <bean id="jsonView" class="org.springframework.web.servlet.view.json.MappingJacksonJsonView" />   
+    
+   
      
     <bean
         class="org.springframework.web.servlet.view.UrlBasedViewResolver" p:order="1"

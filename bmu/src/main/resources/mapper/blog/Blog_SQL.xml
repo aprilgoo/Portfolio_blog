@@ -7,10 +7,9 @@
 <select id="selectPostList" parameterType="hashmap" resultType="hashmap">
 SELECT
             	IDX,
-                TITLE,
-                SUBSTR(CONTENT,1,50) AS CATEGORY,                               
+                TITLE,                                             
                 CREA_DTM,
-                CREA_ID
+                USER_NAME
            FROM
                 POST       
 			
@@ -34,7 +33,7 @@ SELECT
 	            	ORDER BY IDX DESC 	]]>
 	       </when>
 	       <!-- 내용 옵션일 경우 -->
-	       <when test="opt =='contents'">	        	        
+	       <when test="opt =='content'">	        	        
 	        	<![CDATA[    
 	        	WHERE
 	            	DEL_GB = 'N' && CONTENT like CONCAT('%', #{keyword}, '%')
@@ -55,12 +54,12 @@ SELECT
 			TITLE,
 			CONTENT,
 			CREA_DTM,
-			CREA_ID
+			USER_NAME				
 		FROM 
-			POST	
-		WHERE IDX = #{IDX}
-	</select>
-	
+			POST
+		WHERE IDX = #{IDX} AND DEL_GB = 'N'
+									   
+	</select>	
 	
 	<insert id="insertPost" parameterType="hashmap">
 		<![CDATA[ 
@@ -72,7 +71,7 @@ SELECT
 						CONTENT,						
 						DEL_GB,
 						CREA_DTM,
-						CREA_ID
+						USER_NAME
 														
 					
 					)
@@ -83,7 +82,7 @@ SELECT
 						#{CONTENT},						
 						'N',
 						SYSDATE(),
-						'Admin'															
+						#{USER_NAME}															
 					)
 		]]>
 	</insert>
@@ -115,38 +114,57 @@ SELECT
 			INSERT INTO COMMENTS
 				(	
 					IDX,
-					CREA_ID,
+					CO_IDX,
+					USER_NAME,
 					COMMENTS,
 					DEL_GB
 				)
 				VALUES (
 				
 					#{IDX},
-					#{CREA_ID},
+					#{CO_IDX},
+					#{USER_NAME},
 					#{COMMENTS},
 					'N'	
 				)		
 		]]>
 	</insert>
 	
-	<select id="showComments" parameterType="hashmap" resultType="hashmap">
-SELECT
-            	CREA_ID,
+	<select id="viewComments" parameterType="hashmap" resultType="hashmap">
+		<![CDATA[
+		SELECT	
+				IDX,
+				CO_IDX,			
+            	USER_NAME,
               	COMMENTS
            FROM
                 COMMENTS  
-		   WHERE DEL_GB = 'N'   
-			
-           <!--  <include refid="search"></include>   -->       		                     		
-    </select>
-	
+		   WHERE DEL_GB = 'N' AND IDX = #{IDX}		                     		
+    	]]>
+    </select>	
+    
+    <update id="modifyComment" parameterType="hashmap">
+    <![CDATA[
+     UPDATE COMMENTS     		
+     	SET
+     		COMMENTS = #{COMMENTS}
+      	WHERE IDX = #{IDX} AND CO_IDX = #{CO_IDX}
+     
+    
+     ]]>
+    </update>   
+    
+    <update id="deleteComment" parameterType="hashmap">
+    <![CDATA[
+     UPDATE COMMENTS
+     	SET
+     		DEL_GB = 'Y'
+      	WHERE IDX = #{IDX} AND CO_IDX = #{CO_IDX}
+     
+    
+     ]]>
+    </update>
+    
+        
+   
 </mapper>
-
-
-
-
-
-
-
-
-

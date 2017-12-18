@@ -4,7 +4,9 @@
 <html lang="en">
 
 <head>
-	 
+	<%@include file="/layout/include-nav.jsp" %>
+    <%@include file="/layout/include-login.jsp" %>
+    <%@include file="/layout/include-join.jsp" %>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -14,45 +16,10 @@
     <link href="/bootstrap/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="/bootstrap/css/blog-post.css" rel="stylesheet">  
+    <link href="/bootstrap/css/clean-blog.min.css" rel="stylesheet"> 
 </head>
 
-<body>
-            <!-- Navigation -->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-            <div class="container">
-                <a class="navbar-brand" href="/blog/openIndex.do">My blog</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="/blog/openIndex.do">Home
-                <span class="sr-only">(current)</span>
-              </a>
-                        </li>
-                        <% if(session.getAttribute("USER") == null)  { %>
-                            <li class="nav-item">
-                                <a class="nav-link" id="login" data-toggle="modal" data-target="#loginModal">Login</a>
-                            </li>
-                            <% } else { %>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="logout" data-toggle="modal" data-target="#logoutModal">Logout</a>
-                                </li>
-                                <% } %>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="/blog/openBlogWrite.do">Write</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="http://beammeupplz.blog.me/">Contact</a>
-                                    </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    <br>
-    <br>
-    <br>
+<body> 
     <br>
     <br>
     <br>
@@ -68,7 +35,7 @@
                 <!-- Author -->
                 <p class="lead">
                     by
-                    <a href="#">${map.CREA_ID}</a>
+                    <a href="#">${map.USER_NAME}</a>
                 </p>
                 <hr>
                 <!-- Date/Time -->
@@ -80,7 +47,7 @@
                 <!-- Post Content -->
                 <p class="lead">
                     ${map.CONTENT}
-                </p>
+                </p>              
                 <hr>
                 <% if(session.getAttribute("USER") != null)  { %>
                 <div align="right"><a href="/blog/openPostUpdate.do?IDX=${map.IDX}" class="btn btn-outline-info btn-md">MODIFY</a>

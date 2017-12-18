@@ -6,6 +6,7 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
@@ -24,8 +25,6 @@ public class BlogServiceImpl implements BlogService {
 	@Override
 	public List<Map<String, String>> selectPostList(String opt, String keyword) throws Exception {
 		Map<String, String>map = new HashMap<String, String>();
-		map.put("opt", opt);
-		map.put("keyword", keyword);
 		return blogDAO.selectPostList(opt, keyword);	
 		
 	}
@@ -55,22 +54,27 @@ public class BlogServiceImpl implements BlogService {
 	@Override
 	public String insertComments(Map<String, Object> map) throws Exception {
 		blogDAO.insertComments(map);		
-		String IDX = map.get("IDX").toString();
-		log.debug(IDX);
+		String IDX = map.get("IDX").toString();		
 		return IDX;
 		
 	}
 
 	@Override
-	public List<Map<String, Object>> showComments() throws Exception {
-		return blogDAO.showComments();
+	public List<Map<String, Object>> viewComments(Map<String, Object> map) throws Exception {
+		return blogDAO.viewComments(map);
 	}
 
+	@Override
+	public void deleteComment(Map<String, Object> map) throws Exception {
+		blogDAO.deleteComment(map);
+		
+	}
 
-
-
-
-
+	@Override
+	public void modifyComment(Map<String, Object> map) throws Exception {
+		blogDAO.modifyComment(map);		
+		
+	}
 
 
 }

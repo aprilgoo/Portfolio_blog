@@ -21,7 +21,11 @@ public interface BlogService {
 
 	String insertComments(Map<String, Object> map) throws Exception;
 
-	List<Map<String, Object>> showComments() throws Exception;	
+	List<Map<String, Object>> viewComments(Map<String, Object> map) throws Exception;
+
+	void deleteComment(Map<String, Object> map) throws Exception;
+
+	void modifyComment(Map<String, Object> map) throws Exception;	
 
 
 }

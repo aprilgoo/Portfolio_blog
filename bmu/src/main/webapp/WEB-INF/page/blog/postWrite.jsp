@@ -4,6 +4,9 @@
     <html lang="en">
 
     <head>
+    <%@include file="/layout/include-nav.jsp" %>
+    <%@include file="/layout/include-login.jsp" %>
+    <%@include file="/layout/include-join.jsp" %>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="">
@@ -27,39 +30,6 @@
     </head>
 
     <body>
-                <!-- Navigation -->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-            <div class="container">
-                <a class="navbar-brand" href="/blog/openIndex.do">My blog</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="/blog/openIndex.do">Home
-                <span class="sr-only">(current)</span>
-              </a>
-                        </li>
-                        <% if(session.getAttribute("USER") == null)  { %>
-                            <li class="nav-item">
-                                <a class="nav-link" id="login" data-toggle="modal" data-target="#loginModal">Login</a>
-                            </li>
-                            <% } else { %>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="logout" data-toggle="modal" data-target="#logoutModal">Logout</a>
-                                </li>
-                                <% } %>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="/blog/openBlogWrite.do">Write</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="http://beammeupplz.blog.me/">Contact</a>
-                                    </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
         <!-- Page Header -->
         <header class="masthead" style="background-image: url('/img/about-bg.jpg')">
             <div class="overlay"></div>
@@ -92,10 +62,9 @@
                         <br>
                         <button type="submit" class="btn btn-primary float-right">발행하기</button>
                     </div>
-                    <!--       <button type="button" class="btn btn-primary float-right" onclick="showContent();">미리보기</button>
-                        <div class="output"></div> -->
-                </div>
+               		</div> 
                 </th>
+               
             </form>
         </table>
         <hr>

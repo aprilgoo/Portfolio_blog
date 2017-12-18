@@ -4,7 +4,7 @@
 <mapper namespace="login">
 	
 	
-	<select id="LoginCheck" parameterType="hashmap" resultType="hashmap">
+	<select id="loginCheck" parameterType="hashmap" resultType="hashmap">
 		<![CDATA[
 		SELECT 
 			USER_ID,
@@ -17,4 +17,32 @@
 	
 	  ]]>
 	</select>
+	
+	<insert id="insertMember" parameterType="hashmap">
+		<![CDATA[ 
+		
+		INSERT INTO USER
+					(	
+									
+						USER_EMAIL,										
+						USER_ID,
+						USER_PWD,
+						USER_PWD_2,
+						USER_NAME,
+						DEL_GB			
+											
+					
+					)
+					
+				VALUES
+					(						
+						#{USER_EMAIL},
+						#{USER_ID},						
+						#{USER_PWD},
+						#{USER_PWD_2},
+						#{USER_NAME},
+						'N'															
+					)
+		]]>
+	</insert>
 </mapper>

@@ -9,7 +9,10 @@ import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
+
 import bmu.common.common.CommandMap;
+import bmu.common.resolver.CustomMapArgumentResolver;
 import bmu.login.service.LoginService;
 
 @Controller
@@ -26,7 +29,7 @@ public class LoginController {
 		
 		String LoginFlag = "";
 		
-		Map<String, String> map = loginService.LoginCheck(commandMap.getMap());
+		Map<String, String> map = loginService.loginCheck(commandMap.getMap());
 		
 		if (session.getAttribute("USER") != null) {
 			session.removeAttribute("USER");
@@ -64,5 +67,18 @@ public class LoginController {
 		return str;	
 		
 	}	
+	
+	
+	@ResponseBody
+	@RequestMapping(value="/join/memberJoin.do")
+	public String openMemberjoin(CommandMap commandMap) throws Exception {
+		
+		String str = "";
+		str = "yes";
+		loginService.insertMember(commandMap.getMap());		
+		return str;
+		
+	}
+	
 
 }

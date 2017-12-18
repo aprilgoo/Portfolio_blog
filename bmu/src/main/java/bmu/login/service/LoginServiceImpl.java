@@ -3,9 +3,6 @@ package bmu.login.service;
 import java.util.Map;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
@@ -20,8 +17,16 @@ public class LoginServiceImpl implements LoginService {
 	private LoginDAO loginDAO;
 
 	@Override
-	public Map<String, String> LoginCheck(Map<String, Object> map) throws Exception {
-		return loginDAO.LoginCheck(map);
+	public Map<String, String> loginCheck(Map<String, Object> map) throws Exception {
+		return loginDAO.loginCheck(map);
+	}
+
+	@Override
+	public void insertMember(Map<String, Object> map) throws Exception {	
+		
+
+		loginDAO.insertMember(map);	
+		
 	}
 
 

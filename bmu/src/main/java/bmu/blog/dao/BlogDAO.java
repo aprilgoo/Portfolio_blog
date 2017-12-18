@@ -18,9 +18,9 @@ public class BlogDAO extends AbstractDAO {
 
 	@SuppressWarnings("unchecked")
 	public List<Map<String, String>> selectPostList(String opt, String keyword) throws Exception {
-		Map<String, String>map = new HashMap<String, String>();
-	//	map.put("opt", opt);
-	//	map.put("keyword", keyword);		
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("opt", opt);
+		map.put("keyword", keyword);
 		return (List<Map<String, String>>)selectList("blog.selectPostList", map);
 	}
 
@@ -30,7 +30,7 @@ public class BlogDAO extends AbstractDAO {
 	}
 
 	public void insertPost(Map<String, Object> map) throws Exception  {
-		log.debug(map);
+		
 		insert("blog.insertPost", map);		
 	}
 
@@ -50,17 +50,20 @@ public class BlogDAO extends AbstractDAO {
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<Map<String, Object>> showComments() {
-		return (List<Map<String, Object>>)selectList("blog.showComments");
+	public List<Map<String, Object>> viewComments(Map<String, Object> map) throws Exception {
+		return (List<Map<String, Object>>)selectList("blog.viewComments", map);
+	}
+
+	public void deleteComment(Map<String, Object> map) throws Exception {
+		update("blog.deleteComment", map);
+		
+	}
+
+	public void modifyComment(Map<String, Object> map) {
+		update("blog.modifyComment", map);		
 	}
 
 
 
-
-	
-	
-
-	
-	
 
 }

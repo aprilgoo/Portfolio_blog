@@ -14,8 +14,13 @@ public class LoginDAO extends AbstractDAO {
 	
 
 	@SuppressWarnings("unchecked")
-	public Map<String, String> LoginCheck(Map<String, Object> map) throws Exception {
-		return(Map<String, String>)selectOne("login.LoginCheck", map);
+	public Map<String, String> loginCheck(Map<String, Object> map) throws Exception {
+		return(Map<String, String>)selectOne("login.loginCheck", map);
+	}
+
+
+	public void insertMember(Map<String, Object> map) throws Exception {
+		insert("login.insertMember", map);		
 	}
 
 }
