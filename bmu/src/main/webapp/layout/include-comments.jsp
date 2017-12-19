@@ -32,13 +32,13 @@ $(document).ready(function(){
                       	    <form id="frm" method="POST" name="COMMENTS" action="/blog/insertComments.do">                      	    
 	                            <div class="form-group">   
 	                            <% if(session.getAttribute("USER") == null)  { %>                            
-	                        <div class="mt-0"><input type="text" id="USER_NAME" name="USER_NAME" size="15" placeholder="Name(required)" class="post-meta" /></div>
-	                        <% } else { %>
+	                        <div class="mt-0"><input type="text" id="USER_NAME" name="USER_NAME" size=15 placeholder="Name(required)" class="post-meta form-control" /></div>
+	                        <% } else { %>	                        
 	                      	<div class="mt-0">${map.USER_NAME}님</div>  
 	                      	<input type="hidden" id="USER_NAME" name="USER_NAME" value="${map.USER_NAME}" size="10" />	
 	                        <% } %>
 	                            	<input type="hidden" id="IDX" name="IDX" value="${map.IDX}" />
-	                                <textarea class="form-control" rows="3" id="COMMENTS" name="COMMENTS"></textarea>
+	                               <textarea class="form-control" rows="3" id="COMMENTS" name="COMMENTS"></textarea>
 	                            </div>
 	                            <button type="submit" class="btn btn-primary">Submit</button>	                         
 	                        </form>                             
@@ -56,7 +56,7 @@ $(document).ready(function(){
              ${row.COMMENTS} 
            </div>       
 		<!-- <button class="btn2 btn btn-primary">M</button>     -->              
-           <a href="/blog/deleteComments.do?CO_IDX=${row.CO_IDX}&IDX=${row.IDX}" class="btn btn-secondary">D</a>                    		 
+           <a href="/blog/deleteComments.do?CO_IDX=${row.CO_IDX}&IDX=${row.IDX}" class="btn">D</a>                    		 
            </div>  
                  
      		</c:forEach>  

@@ -123,19 +123,7 @@
                 <script src="/bootstrap/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
                 <!-- Custom scripts for this template -->
                 <script src="/bootstrap/js/clean-blog.min.js"></script>
-   <script>
-   $(document).ready(function(e){
-	    $('.search-panel .dropdown-menu').find('a').click(function(e) {
-			e.preventDefault();
-			var param = $(this).attr("href").replace("#","");
-			var concept = $(this).text();
-			$('.search-panel span#search_concept').text(concept);
-			$('.input-group #search_param').val(param);
-		});
-	});
-   
-   </script>
-   
+    
    
     </body>
 
